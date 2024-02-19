@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/add-product",
+    "bodyPatterns": [
+      {
+        "equalToJson": {
+          "name": "ProductABC",
+          "quantity": 10,
+          "price": 25.99
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "saveresponse.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

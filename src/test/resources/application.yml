@@ -1,0 +1,12 @@
+wiremock:
+  port: 8889
+
+test:
+  base-url: http://localhost:9000
+  product-endpoint: /products
+  product-id-endpoint: /product/{id}
+  purchase-endpoint: /purchase-product
+  purchase-history: /purchase-history
+  add-product-endpoint: /add-product
+  update-product-endpoint: /update-product/{id}
+  delete-product-endpoint: /products/{id}

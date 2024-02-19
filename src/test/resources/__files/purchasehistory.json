@@ -1,0 +1,12 @@
+[
+
+  {
+    "id": 2,
+    "productId": 4,
+    "product": "lays",
+    "productPrice": 10,
+    "customerInputAmount": 60,
+    "vendingMachineBalance": 40,
+    "initialBalance": 9940
+  }
+]

@@ -1,0 +1,13 @@
+2024-02-18 21:22:39.051  INFO 19612 --- [main] Vendingmachine.GroovyApplication         : Starting GroovyApplication using Java 11.0.16 on CHE-AANILKUMAR with PID 19612 (C:\Users\Anusha.anilkumar\VendingMachine\Resttemplate\Resttemplate\build\classes\java\main started by Anusha.AnilKumar in C:\Users\Anusha.anilkumar\VendingMachine\Resttemplate\Resttemplate)
+2024-02-18 21:22:39.111  INFO 19612 --- [main] Vendingmachine.GroovyApplication         : No active profile set, falling back to 1 default profile: "default"
+2024-02-18 21:22:41.256  INFO 19612 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9000 (http)
+2024-02-18 21:22:41.263  INFO 19612 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-18 21:22:41.278  INFO 19612 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2024-02-18 21:22:41.497  INFO 19612 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-18 21:22:41.497  INFO 19612 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2261 ms
+2024-02-18 21:22:42.953  INFO 19612 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9000 (http) with context path ''
+2024-02-18 21:22:42.979  INFO 19612 --- [main] Vendingmachine.GroovyApplication         : Started GroovyApplication in 5.103 seconds (JVM running for 6.008)
+2024-02-18 21:22:42.989 DEBUG 19612 --- [main] Vendingmachine.config.LoggingController  : A DEBUG Message
+2024-02-18 21:22:42.989  INFO 19612 --- [main] Vendingmachine.config.LoggingController  : An INFO Message
+2024-02-18 21:22:42.989  WARN 19612 --- [main] Vendingmachine.config.LoggingController  : A WARN Message
+2024-02-18 21:22:42.989 ERROR 19612 --- [main] Vendingmachine.config.LoggingController  : An ERROR Message

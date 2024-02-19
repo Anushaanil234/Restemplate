@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "/product/1"
+  },
+  "response": {
+    "status": 200,
+    "body": "Product deleted successfully",
+    "headers": {
+      "Content-Type": "text/plain"
+    }
+  }
+}

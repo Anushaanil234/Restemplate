@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/purchase-product",
+    "bodyPatterns": [
+      {
+        "equalToJson": {
+          "productId": 1,
+          "price": 35,
+          "quantity": 2
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "__files/purchaseproduct.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+vendingmachine:
+  inventry:
+    defaultProductId: 1
+    defaultName: "Icecream"
+    defaultProductPrice: 10
+    defaultProductInventoryCount: 100
+
+app:
+  endpoints:
+    purchase-history: http://localhost:8080/purchase-history
+    products: http://localhost:8080/products
+    add-product: http://localhost:8080/add-product
+    update-product: http://localhost:8080/update-product
+    delete-product: http://localhost:8080/products/{id}
+
+urls:
+  base-url: http://localhost:8080
+  get-all-inventory: ${urls.base-url}/products
+  get-product-by-id: ${urls.base-url}/product
+  purchase-product: ${urls.base-url}/purchase-product
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  thymeleaf:
+    check-template-location: false
+  jpa:
+    properties:
+      hibernate.format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;databaseName=Vendingmachine
+    username: sa
+    password: P@ssw0rd
+  flyway:
+    enable: true
+    url: jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;databaseName=Vendingmachine
+    user: sa
+    password: P@ssw0rd
+  output:
+    ansi:
+      enabled: always
+
+server:
+  port: 9000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    s7.Application: WARN
+    org.springframework.web: ERROR
+    com.VendingMachine.VendingMachine01: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG
+    Vendingmachine.exception: DEBUG
+    Vendingmachine.config: DEBUG
+    Vendingmachine.logginginterceptor: DEBUG
+
+
+  file:
+    path: WireMock/logs
+    name: application.log

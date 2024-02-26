@@ -3,7 +3,6 @@ package Vendingmachine.controller;
 import Vendingmachine.DTO.CustomerInputDTO;
 import Vendingmachine.DTO.InventoryDTO;
 import Vendingmachine.DTO.VendingMachineOutputDTO;
-import Vendingmachine.exception.InvalidProductId;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
@@ -14,9 +13,10 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 
@@ -48,52 +48,40 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    @Operation(summary = "List of All products")
     public List<InventoryDTO> getListOfAllInventory() {
-        ResponseEntity<List<InventoryDTO>> responseEntity = restTemplate.exchange(
-                this.getAllInventoryUrl,
+        String url = baseUrl + getAllInventoryUrl;
+        log.debug("Request URL: {}", url);
+
+        ResponseEntity<List<InventoryDTO>> response = restTemplate.exchange(
+                url,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<InventoryDTO>>() {
-                }
+                new ParameterizedTypeReference<List<InventoryDTO>>() {}
         );
-        // Check if the response body is not null before calling getBody()
-        if (responseEntity != null && responseEntity.getBody() != null) {
-            return responseEntity.getBody();
-        } else {
-            log.error("Received a null or empty response body.");
-            return Collections.emptyList(); // or throw an exception if appropriate
-        }
+        List<InventoryDTO> inventoryList = response.getBody();
+        return inventoryList != null ? inventoryList : Collections.emptyList();
     }
 
+
     @GetMapping("/product/{id}")
-    @Operation(summary = "Product by Id ")
     public InventoryDTO getProductById(@PathVariable int id) {
-        try {
-            String url = baseUrl + "/product/{id}";
-            return restTemplate.getForObject(url, InventoryDTO.class, id);
-        } catch (HttpClientErrorException.NotFound notFoundException) {
-            // Catch 404 Not Found error and throw your custom exception
-            throw new InvalidProductId("Product with ID " + id + " not found", notFoundException);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            throw new RuntimeException("Failed to fetch product by ID: " + id);
-        }
+        String url = baseUrl + getProductByIdUrl +"/"+ id;
+        return restTemplate.getForObject(url, InventoryDTO.class);
     }
 
     @PutMapping("/purchase-product")
     @Operation(summary = "Purchasing the product")
     public VendingMachineOutputDTO productPurchase(@RequestBody CustomerInputDTO customerInputDTO) {
+        String url = baseUrl + purchaseProductUrl;
         log.info("Number of products to purchase: {}", customerInputDTO.getProducts().size());
         // Use this.purchaseProductUrl
         ResponseEntity<VendingMachineOutputDTO> response = restTemplate.exchange(
-                this.purchaseProductUrl,
+                url,
                 HttpMethod.PUT,
                 new HttpEntity<>(customerInputDTO),
                 VendingMachineOutputDTO.class
         );
         return response.getBody();
     }
-
 
 }

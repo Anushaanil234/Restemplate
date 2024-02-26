@@ -1,1 +1,6 @@
-[]
+[{
+  "productId": 1,
+  "name": "dietcoke",
+  "productPrice": 35,
+  "productInventoryCount": 2
+}]

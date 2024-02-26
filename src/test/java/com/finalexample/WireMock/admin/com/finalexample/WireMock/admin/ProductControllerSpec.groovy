@@ -5,8 +5,10 @@ import Vendingmachine.DTO.InventoryDTO
 import Vendingmachine.DTO.PurchaseInputDTO
 import Vendingmachine.DTO.VendingMachineOutputDTO
 import Vendingmachine.controller.ProductController
+import Vendingmachine.model.Inventry
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
+import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
@@ -48,17 +50,32 @@ class ProductControllerSpec extends Specification {
         WireMock.configureFor("localhost", wireMockServer.port())
     }
 
+    def "return list of all inventory"() {
+        setup()
 
-    def "should return list of all inventory"() {
         given:
-        def expectedInventoryList = []
+        def expectedInventoryList = [
+                new InventoryDTO(
+                        productId: 1,
+                        name: "dietcoke",
+                        productPrice: 35,
+                        productInventoryCount: 2
+                ),
+        ]
         def filePath = "test/resources/__files/getListOfAllInventory.json"
 
-        wireMockServer.stubFor(WireMock.get(WireMock.urlEqualTo(testConfig.productEndpoint))
+        wireMockServer.stubFor(WireMock.get(WireMock.urlEqualTo("/products"))
                 .willReturn(WireMock.aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/json")
                         .withBodyFile(filePath)))
+
+        restTemplateMock.exchange(
+                "${testConfig.baseUrl}${testConfig.productEndpoint}",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<InventoryDTO>>() {}
+        ) >> new ResponseEntity<>(expectedInventoryList, HttpStatus.OK)
 
         when:
         def result = productController.getListOfAllInventory()
@@ -99,10 +116,17 @@ class ProductControllerSpec extends Specification {
                         .quantity(2)
                         .build()
         ])
-        def expectedVendingMachineOutputDTO = new VendingMachineOutputDTO(/* your expected output */)
+        def expectedVendingMachineOutputDTO = new VendingMachineOutputDTO()
+        def filePath = "test/resources/__files/purchaseproduct.json"
+
+        wireMockServer.stubFor(WireMock.get(WireMock.urlEqualTo("/purchase-product"))
+                .willReturn(WireMock.aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBodyFile(filePath)))
 
         restTemplateMock.exchange(
-                testConfig.purchaseEndpoint,  // Corrected property name
+                "${testConfig.baseUrl}${testConfig.purchaseEndpoint}",
                 HttpMethod.PUT,
                 new HttpEntity<>(customerInputDTO),
                 VendingMachineOutputDTO.class
@@ -114,5 +138,8 @@ class ProductControllerSpec extends Specification {
         then:
         result == expectedVendingMachineOutputDTO
     }
+
+
+
 }
 

@@ -1,46 +1,46 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title> Vending Machine</title>
-</head>
-<body>
- <div align="center">
-     <h1>VENDING MACHINE</h1>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns="http://www.w3.org/1999/xhtml"-->
+<!--      xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title> Vending Machine</title>-->
+<!--</head>-->
+<!--<body>-->
+<!-- <div align="center">-->
+<!--     <h1>VENDING MACHINE</h1>-->
 
-     <table border="1" cellpadding="10">
-         <thead>
-         <tr>
-         <th>CODE</th>
-         <th>NAME</th>
-         <th>PRICE</th>
-         </thead>
-         </tr>
-         <tbody>
-         <tr th:each="inventry : ${productList}">
-             <td th:text="${inventry.code}">CODE</td>
-             <td th:text="${inventry.name}">NAME</td>
-             <td th:text="${inventry.price}">PRICE</td>
-         </tr>
+<!--     <table border="1" cellpadding="10">-->
+<!--         <thead>-->
+<!--         <tr>-->
+<!--         <th>CODE</th>-->
+<!--         <th>NAME</th>-->
+<!--         <th>PRICE</th>-->
+<!--         </thead>-->
+<!--         </tr>-->
+<!--         <tbody>-->
+<!--         <tr th:each="inventry : ${productList}">-->
+<!--             <td th:text="${inventry.code}">CODE</td>-->
+<!--             <td th:text="${inventry.name}">NAME</td>-->
+<!--             <td th:text="${inventry.price}">PRICE</td>-->
+<!--         </tr>-->
 
-         </tbody>
-     </table>
-     <br><br>
+<!--         </tbody>-->
+<!--     </table>-->
+<!--     <br><br>-->
 
-     <form action="#" th:action="@{/check}" th:object="${product}" method="post">
-         <h3>Please enter the code: </h3>
-         <table border="0">
-             <tr>
-                 <td><input type="text" th:field="*{code}"></td>
-             </tr>
-             <tr>
-                 <td><button type="submit">check</button> </td>
-             </tr>
-         </table>
-     </form>
+<!--     <form action="#" th:action="@{/check}" th:object="${product}" method="post">-->
+<!--         <h3>Please enter the code: </h3>-->
+<!--         <table border="0">-->
+<!--             <tr>-->
+<!--                 <td><input type="text" th:field="*{code}"></td>-->
+<!--             </tr>-->
+<!--             <tr>-->
+<!--                 <td><button type="submit">check</button> </td>-->
+<!--             </tr>-->
+<!--         </table>-->
+<!--     </form>-->
 
 
- </div>
-</body>
-</html>
+<!-- </div>-->
+<!--</body>-->
+<!--</html>-->

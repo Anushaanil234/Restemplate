@@ -23,3 +23,21 @@
 2024-02-25 21:55:46.101 DEBUG 18748 --- [http-nio-9000-exec-1] o.s.web.client.RestTemplate              : Writing [Vendingmachine.DTO.InventoryDTO@73258690] with org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 2024-02-25 21:55:46.117 DEBUG 18748 --- [http-nio-9000-exec-1] o.s.web.client.RestTemplate              : Response 200 OK
 2024-02-25 21:55:46.117 DEBUG 18748 --- [http-nio-9000-exec-1] o.s.web.client.RestTemplate              : Reading to [java.lang.String] as "text/plain;charset=UTF-8"
+2024-02-25 22:58:29.472  INFO 11536 --- [main] Vendingmachine.GroovyApplication         : Starting GroovyApplication using Java 11.0.16 on CHE-AANILKUMAR with PID 11536 (C:\Users\Anusha.anilkumar\Vending\Resttemplate\Resttemplate\build\classes\java\main started by Anusha.AnilKumar in C:\Users\Anusha.anilkumar\Vending\Resttemplate\Resttemplate)
+2024-02-25 22:58:29.475  INFO 11536 --- [main] Vendingmachine.GroovyApplication         : No active profile set, falling back to 1 default profile: "default"
+2024-02-25 22:58:30.828  INFO 11536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9000 (http)
+2024-02-25 22:58:30.842  INFO 11536 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-25 22:58:30.843  INFO 11536 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2024-02-25 22:58:30.962  INFO 11536 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-25 22:58:30.962  INFO 11536 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1420 ms
+2024-02-25 22:58:31.955  INFO 11536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9000 (http) with context path ''
+2024-02-25 22:58:31.969  INFO 11536 --- [main] Vendingmachine.GroovyApplication         : Started GroovyApplication in 3.087 seconds (JVM running for 3.449)
+2024-02-25 22:58:31.973 DEBUG 11536 --- [main] Vendingmachine.config.LoggingController  : A DEBUG Message
+2024-02-25 22:58:31.973  INFO 11536 --- [main] Vendingmachine.config.LoggingController  : An INFO Message
+2024-02-25 22:58:31.973  WARN 11536 --- [main] Vendingmachine.config.LoggingController  : A WARN Message
+2024-02-25 22:58:31.973 ERROR 11536 --- [main] Vendingmachine.config.LoggingController  : An ERROR Message
+2024-02-25 23:00:25.193  INFO 11536 --- [http-nio-9000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-25 23:00:25.310 DEBUG 11536 --- [http-nio-9000-exec-1] o.s.web.client.RestTemplate              : HTTP DELETE http://localhost:8080/products/1005
+2024-02-25 23:00:25.318 DEBUG 11536 --- [http-nio-9000-exec-1] o.s.web.client.RestTemplate              : Accept=[text/plain, application/json, application/*+json, */*]
+2024-02-25 23:00:25.354 DEBUG 11536 --- [http-nio-9000-exec-1] o.s.web.client.RestTemplate              : Response 200 OK
+2024-02-25 23:00:25.356 DEBUG 11536 --- [http-nio-9000-exec-1] o.s.web.client.RestTemplate              : Reading to [java.lang.String] as "text/plain;charset=UTF-8"
